@@ -5,10 +5,12 @@ generera sidan, och hela källkoden är öppen så att du kan bidra med förbät
 
 ## Köra webbradion.net lokalt
 
-`git clone git@github.com:standout/webbradion.net.git`
-`cd webbradion.net`
-`gem install jekyll`
-`jekyll serve --watch`
+```bash
+git clone git@github.com:standout/webbradion.net.git
+cd webbradion.net
+gem install jekyll
+jekyll serve --watch
+```
 
 Nu kan du komma åt sidan på http://localhost:4000/
 
