@@ -6,7 +6,7 @@ generera sidan, och hela källkoden är öppen så att du kan bidra med förbät
 ## Köra webbradion.net lokalt
 
 ```bash
-git clone git@github.com:standout/webbradion.net.git
+git clone https://github.com/standout/webbradion.net.git
 cd webbradion.net
 gem install jekyll
 jekyll serve --watch
