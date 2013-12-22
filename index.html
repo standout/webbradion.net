@@ -9,3 +9,19 @@ layout: default
 
 <h2>Aktuellt avsnitt: {{ site.posts[0].title }} - {{ post.title }}</h2>
 <a href="{{ site.posts[0].url }}">Gå dit nu</a>
+
+<div class="columns archive">
+  <div class="left"></div>
+  <div class="middle">·
+    <h2>Arkiv</h2>
+    <ol>
+      {% for post in site.posts reversed %}
+      {% unless forloop.last %}
+      <li>
+        <a href="{{post.url}}">{{post.title}}</a>
+      </li>
+      {% endunless %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>
