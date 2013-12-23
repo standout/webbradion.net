@@ -1,4 +1,4 @@
-@import url(reset.css);
+@import url(normalize.css);
 body {
   font: 1em/1.2em Helvetica, Arial, sans-serif;
   background: white url(../images/bg.gif) top left repeat-x !important;
@@ -48,6 +48,7 @@ a:hover { color: #0c5880; }
 #menu {
   clear: left;
   padding-top: 14px;
+  margin: 0;
 }
 #menu li {
   float: left;
