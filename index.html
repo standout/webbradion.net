@@ -20,7 +20,7 @@ layout: default
 </article>
 
 <section class="episodes list">
-  {% for post in site.posts limit: 4 %}
+  {% for post in site.posts limit: 5 %}
   {% unless forloop.first %}
   <article class="episode item">
     <span class="label">{{ post.date | date: '%Y-%m-%d' }}</span>
