@@ -419,3 +419,7 @@ p.news_item {
   margin: 2em;
   line-height: 1.6;
 }
+
+.forkme img {
+  position: absolute; top: 0; right: 0; border: 0;
+}
