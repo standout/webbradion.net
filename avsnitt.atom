@@ -1,0 +1,22 @@
+---
+layout: nil
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="sv-SE" xmlns="http://www.w3.org/2005/Atom">
+  <id>tag:webbradion.net,2005:/avsnitt</id>
+  <link type="text/html" rel="alternate" href="http://webbradion.net"/>
+  <link type="application/atom+xml" rel="self" href="http://webbradion.net/avsnitt.atom"/>
+  <title>Webbradion - podcast för webbutvecklare</title>
+  <updated>{{ site.time | date_to_xmlschema }}</updated>
+  {% for post in site.posts %}<entry>
+    <id>tag:webbradion.net,2005:Episode/{{ post.url | split: '/' | last }}</id>
+    <published>{{ post.date | date_to_xmlschema }}</published>
+    <updated>{{ post.date | date_to_xmlschema }}</updated>
+    <link type="text/html" rel="alternate" href="http://webbradion.net{{ post.url }}"/>
+    <title>{{ post.title}}</title>
+    <content type="html">{{ post.content | strip_html | truncatewords: 20 }} - &lt;a href=&quot;{{ post.sound_file }}&quot;&gt;Ladda hem som MP3&lt;/a&gt;</content>
+    <author>
+      <name>David Elbe, Jonas Schubert Erlandsson, Albert Arvidsson, Alexander Ross och Jonas Arnklint</name>
+    </author>
+  </entry>{% endfor %}
+</feed>
