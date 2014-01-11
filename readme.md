@@ -3,7 +3,7 @@
 Det här är källkoden för webbradion.net. Vi använder oss av Jekyll för att
 generera sidan, och hela källkoden är öppen så att du kan bidra med förbättringar.
 
-Sidan finns på http://stage.webbradion.net/
+Sidan finns på http://webbradion.net/
 
 ## Köra webbradion.net lokalt
 
