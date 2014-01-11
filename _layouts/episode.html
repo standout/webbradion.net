@@ -5,6 +5,19 @@
     <meta charset='utf-8' />
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
     <meta name="description" content="{{ post.description }}" />
+    <!-- Facebook Open Graph Meta Tags -->
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="http://webbradion.net/images/album-art.png"/>
+    <meta property="og:description" content="{{ page.description }}"/>
+    <meta property="og:title" content="{{ page.title }} - Webbradion.net"/>
+    <meta property="og:url" content="http://webbradion.net{{ page.permalink }}"/>
+    <!-- Twitter Open Graph Meta Tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@webbradion">
+    <meta name="twitter:image" content="http://webbradion.net/images/album-art.png">
+    <meta name="twitter:description" content="{{ page.description }}">
+    <meta name="twitter:title" content="{{ page.title }} - Webbradion.net">
+    <meta name="twitter:url" content="http://webbradion.net{{ page.permalink }}">
 
     <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/stylesheet.css">
     <link rel="shortcut icon" href="/images/favicon.ico">
