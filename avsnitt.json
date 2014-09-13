@@ -5,26 +5,12 @@ layout: null
 {% for post in site.posts %}
     {% if post.title != null and post.title != empty %}
     {% if forloop.index > 1 %},{%endif%}{
-        "title": {{post.title | json}},
-        "content": {{post.content | markdownify | strip_html | json}},
-        "link": "{{ site.url }}{{ post.url }}",
-        "date": "{{ post.date }}",
-        "excerpt": "{{ post.snippet }}",
-        "seach_omit": "{{ post.search_omit }}"
+        "title": "{{post.title | strip_html | replace: '"', '\"'}}",
+        "content": "{{post.content | markdownify | strip_html | replace: '"', '\"' | strip_newlines}}",
+        "link": "{{ post.url }}",
+        "date": "{{ post.date | date_to_xmlschema }}",
+        "description": "{{ post.description | strip_html | replace: '"', '\"'}}"
     }
-    {%endif%}
-{% endfor %}
-
-{% for page in site.pages %}
-    {% if page.layout != 'none' and page.layout != 'none' and page.title != null and page.title != empty %}
-        {% if forloop.index > 1 %},{%endif%}{
-            "title": {{page.title | json}},
-            "content": {{page.content | strip_html | json}},
-            "link": "{{ site.url }}{{ page.url | replace: 'index.html', '' }}",
-            "date": {{ page.date | json }},
-            "excerpt": {{ page.description | json }},
-            "seach_omit": "{{ post.search_omit }}"
-        }
     {%endif%}
 {% endfor %}
 ]

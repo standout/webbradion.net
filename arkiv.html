@@ -14,7 +14,7 @@ layout: default
 <!-- Angular list that can be searched, replaces jekyll list once ready -->
 <ul ng-cloak ng-show="posts.length">
   <li ng-repeat="post in filteredPosts = (posts | filter: searchFilter)">
-    <a ng-href="[[ post.link ]]">[[ post.title ]] - [[ post.date | limitTo: 10 ]]</a>
+    <a ng-href="[[ post.link ]]">[[ post.title ]] - [[ post.date | date: 'yyyy-MM-dd' ]]</a>
   </li>
 </ul>
 
