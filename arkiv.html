@@ -2,8 +2,85 @@
 layout: default
 ---
 <h2>Arkiv</h2>
-<ul>
+
+<h3 ng-cloak ng-show="posts.length && !filteredPosts.length">
+  <span>Hoppsan!</span>
+  <small>
+    Din sökning på `[[ searchFilter['$'] ]]` matchade tyvärr ingenting.<br/>
+    Men tipsa oss gärna, så kanske vi pratar om det i nästa avsnitt!
+  </small>
+</h3>
+
+<!-- Angular list that can be searched, replaces jekyll list once ready -->
+<ul ng-cloak ng-show="posts.length">
+  <li ng-repeat="post in filteredPosts = (posts | filter: searchFilter)">
+    <a ng-href="[[ post.link ]]">[[ post.title ]] - [[ post.date | limitTo: 10 ]]</a>
+  </li>
+</ul>
+
+<!-- Default list that search engines see, we hide this when the angular list is ready -->
+<ul ng-hide="posts.length">
   {% for post in site.posts %}
     <li><a href="{{ post.url }}">{{ post.title }} - {{ post.date | date: '%Y-%m-%d' }}</a></li>
   {% endfor %}
 </ul>
+
+<style type="text/css">
+  [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+  }
+</style>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+<script>
+  angular.module('webbradion', [])
+    // Work directly against url /arkiv.html?ord=xyz instead of /arkiv.html#/?ord=xyz
+    .config(function ($locationProvider) {
+      $locationProvider.html5Mode(true);
+    })
+    // Use square brackets instead of curly braces so we don't collide with jekyll
+    .config(function($interpolateProvider){
+      $interpolateProvider.startSymbol('[[').endSymbol(']]');
+    })
+    .controller('RootCtrl', function ($scope, $http, $location, $rootScope) {
+      // GET /avsnitt.json collection and save to $scope.posts
+      $http.get('/avsnitt.json')
+        .then(function (response) {
+          $scope.posts = response.data;
+        });
+      // Define our filtering object
+      // By defining the $ property, angular gives us a free text search automatically
+      $scope.searchFilter = {
+        '$': $location.search().ord
+      };
+      // This is called repeatedly when user is typing
+      $scope.search = function () {
+        // Update search params as user is typing
+        $location.search({
+          ord: $scope.searchFilter['$']
+        });
+      };
+      // Since we have html5mode enabled, angular will prevent normal
+      // navigation to other pages when clicking links, we have to manually
+      // make sure to change window.location when appropriate.
+      $rootScope.$on('$locationChangeStart', function (_event, newUrl, oldUrl) {
+        function removeProtocol(url) {
+          return url.substr(url.indexOf(':') + 3, url.length - 1);
+        }
+        function removeHost(url) {
+          return url.substr(url.indexOf('/') + 1, url.length - 1);
+        }
+        var path = removeHost(removeProtocol(newUrl));
+        var oldPath = removeHost(removeProtocol(oldUrl));
+        // Break out of angular app if url is another page
+        // In all other cases we want to stay here,
+        // because the event was triggered by $location.search()
+        if (path.substr(0, 10) !== 'arkiv.html') { window.location = newUrl; }
+        // When user clicks on Arkiv again we should reset searchFilter,
+        // easist way is to do a full page reload
+        if (path === 'arkiv.html') {
+          // But we dont want an infinite loop
+          if (oldPath !== 'arkiv.html') { window.location = '/arkiv.html'; }
+        }
+      });
+    });
+</script>
