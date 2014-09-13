@@ -5,3 +5,11 @@
   <li class="about"><a href="/om.html" title="Om Webbradion"><span>Information </span>om oss</a></li>
   <li class="arkiv"><a href="/arkiv.html" title="Arkiv - gamla avsnitt"><span>Gamla avsnitt </span>Arkiv</a></li>
 </ul>
+<!-- When angular isnt loaded this works as a normal form -->
+<!-- When angular is loaded it performs instant filtering -->
+<form method="get" action="/arkiv.html">
+  <input type="search" name="ord" placeholder="Sök..."
+    ng-model="searchFilter['$']"
+    ng-change="search()"/>
+  <button type="submit">Sök</button>
+</form>

@@ -1,7 +1,7 @@
 @import url(normalize.css);
 body {
   font: 1em/1.2em Helvetica, Arial, sans-serif;
-  background: white url(../images/bg.gif) top left repeat-x !important;
+  background: white url(../images/bg.png) top left repeat-x !important;
   text-align: center;
   margin: 0 auto;
 }

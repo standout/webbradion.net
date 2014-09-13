@@ -1,0 +1,16 @@
+---
+layout: null
+---
+[
+{% for post in site.posts %}
+    {% if post.title != null and post.title != empty %}
+    {% if forloop.index > 1 %},{%endif%}{
+        "title": "{{post.title | strip_html | replace: '"', '\"'}}",
+        "content": "{{post.content | markdownify | strip_html | replace: '"', '\"' | strip_newlines}}",
+        "link": "{{ post.url }}",
+        "date": "{{ post.date | date_to_xmlschema }}",
+        "description": "{{ post.description | strip_html | replace: '"', '\"'}}"
+    }
+    {%endif%}
+{% endfor %}
+]
