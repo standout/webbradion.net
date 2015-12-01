@@ -8,7 +8,7 @@ layout: null
   <link type="application/atom+xml" rel="self" href="http://webbradion.net/avsnitt.atom"/>
   <title>Webbradion - podcast för webbutvecklare</title>
   <updated>{{ site.time | date_to_xmlschema }}</updated>
-  {% for post in site.posts %}<entry>
+  {% for post in site.posts limit: 20 %}<entry>
     <id>tag:webbradion.net,2005:Episode/{{ post.url | split: '/' | last }}</id>
     <published>{{ post.date | date_to_xmlschema }}</published>
     <updated>{{ post.date | date_to_xmlschema }}</updated>
