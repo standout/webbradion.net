@@ -18,7 +18,7 @@ a:hover { color: #0c5880; }
 
 /* HEADER */
 #header {
-  background: url('../images/radio.gif') no-repeat left top;
+  background: url('/images/radio.png') no-repeat left top;
   padding-left: 165px;
   height: 156px;
 }
@@ -32,7 +32,7 @@ a:hover { color: #0c5880; }
   overflow: hidden;
 }
 #logo a.logo {
-  background: url('../images/logga.gif') no-repeat scroll center left;
+  background: url('/images/logo.png') no-repeat scroll center left;
   width: 166px;
   height: 28px;
   display: block;
