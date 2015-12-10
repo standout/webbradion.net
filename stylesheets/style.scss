@@ -1,4 +1,11 @@
-@import url(normalize.css);
+---
+# this ensures Jekyll reads the file to be transformed into CSS later
+# only Main files contain this front matter, not partials.
+---
+
+@import "normalize";
+
+
 body {
   font: 1em/1.2em Helvetica, Arial, sans-serif;
   background: white url(../images/bg.png) top left repeat-x !important;
