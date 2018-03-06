@@ -12,8 +12,8 @@ git clone git@github.com:standout/webbradion.net.git
 # or git clone https://github.com/standout/webbradion.net.git
 # if you have problems with your ssh keys
 cd webbradion.net
-gem install jekyll
-jekyll serve --watch
+bundle install
+bundle exec jekyll serve --watch
 ```
 
 Nu kan du komma åt sidan på [localhost:4000](http://localhost:4000/)
